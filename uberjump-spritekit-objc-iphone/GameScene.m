@@ -13,6 +13,7 @@
     SKNode *_midgroundNode;
     SKNode *_foregroundNode;
     SKNode *_hudNode;
+    SKNode *_player;
 }
 @end
 
@@ -24,6 +25,12 @@
         
         _backgroundNode = [self createBackgroundNode];
         [self addChild:_backgroundNode];
+        
+        _foregroundNode = [SKNode node];
+        [self addChild:_foregroundNode];
+        
+        _player = [self createPlayer];
+        [_foregroundNode addChild:_player];
     }
     
     return self;
@@ -46,6 +53,16 @@
     }
     
     return backgroundNode;
+}
+
+-(SKNode *)createPlayer {
+    SKNode *playerNode = [SKNode node];
+    [playerNode setPosition:CGPointMake(160.0f, 80.0f)];
+    
+    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Player"];
+    [playerNode addChild:sprite];
+    
+    return playerNode;
 }
 
 @end
