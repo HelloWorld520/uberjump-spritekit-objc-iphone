@@ -8,42 +8,44 @@
 
 #import "GameScene.h"
 
+@interface GameScene() {
+    SKNode *_backgroundNode;
+    SKNode *_midgroundNode;
+    SKNode *_foregroundNode;
+    SKNode *_hudNode;
+}
+@end
+
 @implementation GameScene
 
--(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+-(id)initWithSize:(CGSize)size{
+    if (self = [super initWithSize:size]) {
+        self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+        _backgroundNode = [self createBackgroundNode];
+        [self addChild:_backgroundNode];
     }
+    
+    return self;
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+}
+
+-(SKNode *)createBackgroundNode{
+    SKNode *backgroundNode = [SKNode node];
+    for (int nodeCount = 0; nodeCount < 20; nodeCount++) {
+        NSString *backgroundImageName = [NSString stringWithFormat:@"Background%02d", nodeCount+1];
+        SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:backgroundImageName];
+        
+        node.anchorPoint = CGPointMake(0.5f, 0.5f);
+        node.position = CGPointMake(160.0f, nodeCount*64.0f);
+        
+        [backgroundNode addChild:node];
+    }
+    
+    return backgroundNode;
 }
 
 @end
