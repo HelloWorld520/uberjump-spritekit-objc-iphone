@@ -60,6 +60,7 @@
 		0455AA181AE7573B00CE0845 /* Background20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0455A9ED1AE7573B00CE0845 /* Background20@2x.png */; };
 		0455AA191AE7573B00CE0845 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0455A9EE1AE7573B00CE0845 /* Background@2x.png */; };
 		04E0B6151AE827010012AEC3 /* GameObjectNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0B6141AE827010012AEC3 /* GameObjectNode.m */; };
+		04E0B6181AE829970012AEC3 /* StarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0B6171AE829970012AEC3 /* StarNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,8 @@
 		0455A9EE1AE7573B00CE0845 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
 		04E0B6131AE827010012AEC3 /* GameObjectNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectNode.h; sourceTree = "<group>"; };
 		04E0B6141AE827010012AEC3 /* GameObjectNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObjectNode.m; sourceTree = "<group>"; };
+		04E0B6161AE829970012AEC3 /* StarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarNode.h; sourceTree = "<group>"; };
+		04E0B6171AE829970012AEC3 /* StarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 				0455A9A11AE7553300CE0845 /* GameScene.sks */,
 				04E0B6131AE827010012AEC3 /* GameObjectNode.h */,
 				04E0B6141AE827010012AEC3 /* GameObjectNode.m */,
+				04E0B6161AE829970012AEC3 /* StarNode.h */,
+				04E0B6171AE829970012AEC3 /* StarNode.m */,
 				0455A9A31AE7553300CE0845 /* GameViewController.h */,
 				0455A9A41AE7553300CE0845 /* GameViewController.m */,
 				0455A9A61AE7553300CE0845 /* Main.storyboard */,
@@ -426,6 +431,7 @@
 				0455A99D1AE7553300CE0845 /* AppDelegate.m in Sources */,
 				0455A9A01AE7553300CE0845 /* GameScene.m in Sources */,
 				0455A99A1AE7553300CE0845 /* main.m in Sources */,
+				04E0B6181AE829970012AEC3 /* StarNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "StarNode.h"
 
 @interface GameScene() {
     SKNode *_backgroundNode;
@@ -34,6 +35,9 @@
         
         _hudNode = [SKNode node];
         [self addChild:_hudNode];
+        
+        StarNode *star = [self createStarAtPosition:CGPointMake(160, 220)];
+        [_foregroundNode addChild:star];
         
         _player = [self createPlayer];
         [_foregroundNode addChild:_player];
@@ -92,6 +96,22 @@
     playerNode.physicsBody.linearDamping = 0.0f;
     
     return playerNode;
+}
+
+-(StarNode *)createStarAtPosition:(CGPoint)position{
+    StarNode *node = [StarNode node];
+    [node setPosition:position];
+    [node setName:@"NODE_STAR"];
+    
+    SKSpriteNode *sprite;
+    sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Star"];
+    [node addChild:sprite];
+    
+    node.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:sprite.size.width/2];
+    
+    node.physicsBody.dynamic = NO;
+    
+    return node;
 }
 
 @end
