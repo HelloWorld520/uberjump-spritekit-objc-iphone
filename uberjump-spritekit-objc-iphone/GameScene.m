@@ -43,7 +43,7 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
         _hudNode = [SKNode node];
         [self addChild:_hudNode];
         
-        StarNode *star = [self createStarAtPosition:CGPointMake(160, 220)];
+        StarNode *star = [self createStarAtPosition:CGPointMake(160, 220) ofType:STAR_SPECIAL];
         [_foregroundNode addChild:star];
         
         _player = [self createPlayer];
@@ -119,13 +119,18 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     return playerNode;
 }
 
--(StarNode *)createStarAtPosition:(CGPoint)position{
+-(StarNode *)createStarAtPosition:(CGPoint)position ofType:(StarType)type{
     StarNode *node = [StarNode node];
     [node setPosition:position];
     [node setName:@"NODE_STAR"];
     
+    [node setStarType:type];
     SKSpriteNode *sprite;
-    sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Star"];
+    if (type == STAR_SPECIAL) {
+        sprite = [SKSpriteNode spriteNodeWithImageNamed:@"StarSpecial"];
+    } else {
+        sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Star"];
+    }
     [node addChild:sprite];
     
     node.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:sprite.size.width/2];
