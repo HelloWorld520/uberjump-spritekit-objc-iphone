@@ -9,7 +9,13 @@
 #import "GameScene.h"
 #import "StarNode.h"
 
-@interface GameScene() {
+typedef NS_OPTIONS(uint32_t, CollisionCategory){
+    CollisionCategoryPlayer = 0x1 << 0,
+    CollisionCategoryStar = 0x1 << 1,
+    CollisionCategoryPlatform = 0x1 << 2
+};
+
+@interface GameScene() <SKPhysicsContactDelegate> {
     SKNode *_backgroundNode;
     SKNode *_midgroundNode;
     SKNode *_foregroundNode;
@@ -26,6 +32,7 @@
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
         self.physicsWorld.gravity = CGVectorMake(0.0f, -2.0f);
+        self.physicsWorld.contactDelegate = self;
         
         _backgroundNode = [self createBackgroundNode];
         [self addChild:_backgroundNode];
@@ -65,6 +72,15 @@
     [_player.physicsBody applyImpulse:CGVectorMake(0.0f, 20.0f)];
 }
 
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+    bool updateHUD = NO;
+    SKNode *other = (contact.bodyA.node != _player) ? contact.bodyA.node : contact.bodyB.node;
+    updateHUD = [(GameObjectNode *)other collisionWithPlayer:_player];
+    if (updateHUD) {
+        // TODO: update HUD
+    }
+}
+
 -(SKNode *)createBackgroundNode{
     SKNode *backgroundNode = [SKNode node];
     for (int nodeCount = 0; nodeCount < 20; nodeCount++) {
@@ -95,6 +111,11 @@
     playerNode.physicsBody.angularDamping = 0.0f;
     playerNode.physicsBody.linearDamping = 0.0f;
     
+    playerNode.physicsBody.usesPreciseCollisionDetection = YES;
+    playerNode.physicsBody.categoryBitMask = CollisionCategoryPlayer;
+    playerNode.physicsBody.collisionBitMask = 0;
+    playerNode.physicsBody.contactTestBitMask = CollisionCategoryStar | CollisionCategoryPlatform;
+    
     return playerNode;
 }
 
@@ -110,6 +131,9 @@
     node.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:sprite.size.width/2];
     
     node.physicsBody.dynamic = NO;
+    
+    node.physicsBody.categoryBitMask = CollisionCategoryStar;
+    node.physicsBody.collisionBitMask = 0;
     
     return node;
 }
