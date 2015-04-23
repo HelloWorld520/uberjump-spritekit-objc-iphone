@@ -61,6 +61,7 @@
 		0455AA191AE7573B00CE0845 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0455A9EE1AE7573B00CE0845 /* Background@2x.png */; };
 		04E0B6151AE827010012AEC3 /* GameObjectNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0B6141AE827010012AEC3 /* GameObjectNode.m */; };
 		04E0B6181AE829970012AEC3 /* StarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0B6171AE829970012AEC3 /* StarNode.m */; };
+		04E0B61A1AE880B70012AEC3 /* StarPing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04E0B6191AE880B70012AEC3 /* StarPing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		04E0B6141AE827010012AEC3 /* GameObjectNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObjectNode.m; sourceTree = "<group>"; };
 		04E0B6161AE829970012AEC3 /* StarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarNode.h; sourceTree = "<group>"; };
 		04E0B6171AE829970012AEC3 /* StarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarNode.m; sourceTree = "<group>"; };
+		04E0B6191AE880B70012AEC3 /* StarPing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StarPing.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				04E0B6171AE829970012AEC3 /* StarNode.m */,
 				0455A9A31AE7553300CE0845 /* GameViewController.h */,
 				0455A9A41AE7553300CE0845 /* GameViewController.m */,
+				04E0B6191AE880B70012AEC3 /* StarPing.wav */,
 				0455A9A61AE7553300CE0845 /* Main.storyboard */,
 				0455A9A91AE7553300CE0845 /* Images.xcassets */,
 				0455A9AB1AE7553300CE0845 /* LaunchScreen.xib */,
@@ -362,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E0B61A1AE880B70012AEC3 /* StarPing.wav in Resources */,
 				0455AA051AE7573B00CE0845 /* Background11.png in Resources */,
 				0455A9FF1AE7573B00CE0845 /* Background08.png in Resources */,
 				0455AA161AE7573B00CE0845 /* Background19@2x.png in Resources */,

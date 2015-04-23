@@ -7,12 +7,29 @@
 //
 
 #import "StarNode.h"
+@import AVFoundation;
+
+@interface StarNode(){
+    SKAction *_starSound;
+}
+@end
 
 @implementation StarNode
+
+-(id)init{
+    if (self = [super init]) {
+        _starSound = [SKAction playSoundFileNamed:@"StarPing.wav" waitForCompletion:NO];
+    }
+    
+    return self;
+}
 
 -(bool)collisionWithPlayer:(SKNode *)player{
     // boost the player up
     player.physicsBody.velocity = CGVectorMake(player.physicsBody.velocity.dx, 400.0f);
+    
+    // play sound
+    [self.parent runAction:_starSound];
     
     // remove this star
     [self removeFromParent];
