@@ -63,6 +63,7 @@
 		04E0B6181AE829970012AEC3 /* StarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0B6171AE829970012AEC3 /* StarNode.m */; };
 		04E0B61A1AE880B70012AEC3 /* StarPing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 04E0B6191AE880B70012AEC3 /* StarPing.wav */; };
 		04E0B61D1AE8824F0012AEC3 /* PlatformNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0B61C1AE8824F0012AEC3 /* PlatformNode.m */; };
+		04E0B61F1AE96A8A0012AEC3 /* Level01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E0B61E1AE96A8A0012AEC3 /* Level01.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		04E0B6191AE880B70012AEC3 /* StarPing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StarPing.wav; sourceTree = "<group>"; };
 		04E0B61B1AE8824F0012AEC3 /* PlatformNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformNode.h; sourceTree = "<group>"; };
 		04E0B61C1AE8824F0012AEC3 /* PlatformNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformNode.m; sourceTree = "<group>"; };
+		04E0B61E1AE96A8A0012AEC3 /* Level01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level01.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				0455A9A41AE7553300CE0845 /* GameViewController.m */,
 				04E0B6191AE880B70012AEC3 /* StarPing.wav */,
 				0455A9A61AE7553300CE0845 /* Main.storyboard */,
+				04E0B61E1AE96A8A0012AEC3 /* Level01.plist */,
 				0455A9A91AE7553300CE0845 /* Images.xcassets */,
 				0455A9AB1AE7553300CE0845 /* LaunchScreen.xib */,
 				0455A9971AE7553300CE0845 /* Supporting Files */,
@@ -400,6 +403,7 @@
 				0455AA041AE7573B00CE0845 /* Background10@2x.png in Resources */,
 				0455AA121AE7573B00CE0845 /* Background17@2x.png in Resources */,
 				0455AA101AE7573B00CE0845 /* Background16@2x.png in Resources */,
+				04E0B61F1AE96A8A0012AEC3 /* Level01.plist in Resources */,
 				0455AA191AE7573B00CE0845 /* Background@2x.png in Resources */,
 				0455AA0D1AE7573B00CE0845 /* Background15.png in Resources */,
 				0455AA181AE7573B00CE0845 /* Background20@2x.png in Resources */,
