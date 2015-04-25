@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "StarNode.h"
 #import "PlatformNode.h"
+#import "GameState.h"
 @import CoreMotion;
 
 typedef NS_OPTIONS(uint32_t, CollisionCategory){
@@ -32,6 +33,9 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     
     // acceleration value from accelerometer
     CGFloat _xAcceleration;
+    
+    SKLabelNode *_lblScore;
+    SKLabelNode *_lblStars;
 }
 @end
 
@@ -114,6 +118,28 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
         _tapToStartNode = [SKSpriteNode spriteNodeWithImageNamed:@"TapToStart"];
         _tapToStartNode.position = CGPointMake(160, 180.0f);
         [_hudNode addChild:_tapToStartNode];
+        
+        // build the HUD
+        SKSpriteNode *star = [SKSpriteNode spriteNodeWithImageNamed:@"Star"];
+        star.position = CGPointMake(25, self.size.height - 30);
+        [_hudNode addChild:star];
+        
+        _lblStars = [SKLabelNode labelNodeWithFontNamed:@"ChalkboardSE-Bold"];
+        _lblStars.fontSize = 30;
+        _lblStars.fontColor = [SKColor whiteColor];
+        _lblStars.position = CGPointMake(50, self.size.height-40);
+        _lblStars.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        [_lblStars setText:[NSString stringWithFormat:@"X %d", [GameState sharedInstance].stars]];
+        [_hudNode addChild:_lblStars];
+        
+        // Score
+        _lblScore = [SKLabelNode labelNodeWithFontNamed:@"ChalkboardSE-Bold"];
+        _lblScore.fontSize = 30;
+        _lblScore.fontColor = [SKColor whiteColor];
+        _lblScore.position = CGPointMake(self.size.width-20, self.size.height-40);
+        _lblScore.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+        [_lblScore setText:@"0"];
+        [_hudNode addChild:_lblScore];
         
         _motionManager = [[CMMotionManager alloc] init];
         _motionManager.accelerometerUpdateInterval = 0.2;

@@ -14,6 +14,7 @@
 @property (nonatomic, assign) int highScore;
 @property (nonatomic, assign) int stars;
 
++(instancetype)sharedInstance;
 -(void)saveState;
 
 @end
