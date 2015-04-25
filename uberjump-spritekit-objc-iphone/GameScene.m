@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "StarNode.h"
 #import "PlatformNode.h"
+@import CoreMotion;
 
 typedef NS_OPTIONS(uint32_t, CollisionCategory){
     CollisionCategoryPlayer = 0x1 << 0,
@@ -25,6 +26,12 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     SKNode *_tapToStartNode;
     // height at which the player ends the level
     int _endLevelY;
+    
+    // motion manager for accelerometer
+    CMMotionManager *_motionManager;
+    
+    // acceleration value from accelerometer
+    CGFloat _xAcceleration;
 }
 @end
 
@@ -107,6 +114,13 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
         _tapToStartNode = [SKSpriteNode spriteNodeWithImageNamed:@"TapToStart"];
         _tapToStartNode.position = CGPointMake(160, 180.0f);
         [_hudNode addChild:_tapToStartNode];
+        
+        _motionManager = [[CMMotionManager alloc] init];
+        _motionManager.accelerometerUpdateInterval = 0.2;
+        [_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+            CMAcceleration acceleration = accelerometerData.acceleration;
+            _xAcceleration = (acceleration.x * 0.75) + (_xAcceleration * 0.25);
+        }];
     }
     
     return self;
@@ -247,6 +261,16 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     }
     
     return midgroundNode;
+}
+
+-(void)didSimulatePhysics{
+    _player.physicsBody.velocity = CGVectorMake(_xAcceleration * 400.0f, _player.physicsBody.velocity.dy);
+    
+    if (_player.position.x < -20.0f) {
+        _player.position = CGPointMake(340.0f, _player.position.y);
+    } else if (_player.position.x > 340.0f) {
+        _player.position = CGPointMake(-20.0f, _player.position.y);
+    }
 }
 
 @end
