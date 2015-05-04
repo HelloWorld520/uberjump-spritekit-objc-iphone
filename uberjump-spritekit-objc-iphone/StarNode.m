@@ -7,6 +7,7 @@
 //
 
 #import "StarNode.h"
+#import "GameState.h"
 @import AVFoundation;
 
 @interface StarNode(){
@@ -33,6 +34,12 @@
     
     // remove this star
     [self removeFromParent];
+    
+    // award score
+    [GameState sharedInstance].score += (_starType == STAR_NORMAL ? 20 : 100);
+    
+    // award stars
+    [GameState sharedInstance].stars += (_starType == STAR_NORMAL ? 1 : 5);
     
     // the HUD needs updating to show the new stars and score
     return YES;

@@ -36,6 +36,9 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     
     SKLabelNode *_lblScore;
     SKLabelNode *_lblStars;
+    
+    // max y reached by player
+    int _maxPlayerY;
 }
 @end
 
@@ -44,6 +47,9 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
 -(id)initWithSize:(CGSize)size{
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        
+        // reset
+        _maxPlayerY = 80;
         
         self.physicsWorld.gravity = CGVectorMake(0.0f, -2.0f);
         self.physicsWorld.contactDelegate = self;
@@ -154,6 +160,22 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    // new max height ?
+    if ((int)_player.position.y > _maxPlayerY) {
+        [GameState sharedInstance].score += (int)_player.position.y - _maxPlayerY;
+        _maxPlayerY = (int)_player.position.y;
+        [_lblScore setText:[NSString stringWithFormat:@"%d", [GameState sharedInstance].score]];
+    }
+    
+    // remove game objects that have passed by
+    [_foregroundNode enumerateChildNodesWithName:@"NODE_PLATFORM" usingBlock:^(SKNode *node, BOOL *stop) {
+        [((PlatformNode *)node) checkNodeRemoval:_player.position.y];
+    }];
+    
+    [_foregroundNode enumerateChildNodesWithName:@"NODE_STAR" usingBlock:^(SKNode *node, BOOL *stop) {
+        [((StarNode *)node) checkNodeRemoval:_player.position.y];
+    }];
+    
     // calculate player y offset
     if (_player.position.y > 200.0f) {
         _backgroundNode.position = CGPointMake(0.0f, -((_player.position.y - 200.0f)/10));
@@ -178,7 +200,8 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     SKNode *other = (contact.bodyA.node != _player) ? contact.bodyA.node : contact.bodyB.node;
     updateHUD = [(GameObjectNode *)other collisionWithPlayer:_player];
     if (updateHUD) {
-        // TODO: update HUD
+        [_lblStars setText:[NSString stringWithFormat:@"X %d", [GameState sharedInstance].stars]];
+        [_lblScore setText:[NSString stringWithFormat:@"%d", [GameState sharedInstance].score]];
     }
 }
 
