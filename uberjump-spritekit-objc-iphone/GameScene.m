@@ -10,6 +10,7 @@
 #import "StarNode.h"
 #import "PlatformNode.h"
 #import "GameState.h"
+#import "EndGameScene.h"
 @import CoreMotion;
 
 typedef NS_OPTIONS(uint32_t, CollisionCategory){
@@ -39,6 +40,9 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     
     // max y reached by player
     int _maxPlayerY;
+    
+    // game over dude!
+    bool _gameOver;
 }
 @end
 
@@ -160,6 +164,10 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    if (_gameOver) {
+        return;
+    }
+    
     // new max height ?
     if ((int)_player.position.y > _maxPlayerY) {
         [GameState sharedInstance].score += (int)_player.position.y - _maxPlayerY;
@@ -181,6 +189,16 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
         _backgroundNode.position = CGPointMake(0.0f, -((_player.position.y - 200.0f)/10));
         _midgroundNode.position = CGPointMake(0.0f, -((_player.position.y - 200.0f)/4));
         _foregroundNode.position = CGPointMake(0.0f, -(_player.position.y - 200.0f));
+    }
+    
+    // check if we've finished the level
+    if (_player.position.y > _endLevelY) {
+        [self endGame];
+    }
+    
+    // check if we've fallen too far
+    if (_player.position.y < (_maxPlayerY - 400)) {
+        [self endGame];
     }
 }
 
@@ -320,6 +338,17 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
     } else if (_player.position.x > 340.0f) {
         _player.position = CGPointMake(-20.0f, _player.position.y);
     }
+}
+
+-(void)endGame{
+    _gameOver = YES;
+    
+    // save stars and high score
+    [[GameState sharedInstance] saveState];
+    
+    SKScene *endGameScene = [[EndGameScene alloc] initWithSize:self.size];
+    SKTransition *reveal = [SKTransition fadeWithDuration:0.5];
+    [self.view presentScene:endGameScene transition:reveal];
 }
 
 @end

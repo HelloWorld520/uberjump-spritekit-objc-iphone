@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040CB0A31AF98B9400AF1CC5 /* EndGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CB0A21AF98B9400AF1CC5 /* EndGameScene.m */; };
 		0455A99A1AE7553300CE0845 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455A9991AE7553300CE0845 /* main.m */; };
 		0455A99D1AE7553300CE0845 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455A99C1AE7553300CE0845 /* AppDelegate.m */; };
 		0455A9A01AE7553300CE0845 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455A99F1AE7553300CE0845 /* GameScene.m */; };
@@ -78,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040CB0A11AF98B9400AF1CC5 /* EndGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameScene.h; sourceTree = "<group>"; };
+		040CB0A21AF98B9400AF1CC5 /* EndGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameScene.m; sourceTree = "<group>"; };
 		0455A9941AE7553300CE0845 /* uberjump-spritekit-objc-iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uberjump-spritekit-objc-iphone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0455A9981AE7553300CE0845 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0455A9991AE7553300CE0845 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				0455A99C1AE7553300CE0845 /* AppDelegate.m */,
 				0455A99E1AE7553300CE0845 /* GameScene.h */,
 				0455A99F1AE7553300CE0845 /* GameScene.m */,
+				040CB0A11AF98B9400AF1CC5 /* EndGameScene.h */,
+				040CB0A21AF98B9400AF1CC5 /* EndGameScene.m */,
 				048F466E1AEB17E000B81565 /* GameState.h */,
 				048F466F1AEB17E000B81565 /* GameState.m */,
 				0455A9A11AE7553300CE0845 /* GameScene.sks */,
@@ -445,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E0B61D1AE8824F0012AEC3 /* PlatformNode.m in Sources */,
+				040CB0A31AF98B9400AF1CC5 /* EndGameScene.m in Sources */,
 				048F46701AEB17E000B81565 /* GameState.m in Sources */,
 				04E0B6151AE827010012AEC3 /* GameObjectNode.m in Sources */,
 				0455A9A51AE7553300CE0845 /* GameViewController.m in Sources */,
