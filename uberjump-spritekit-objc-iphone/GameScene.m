@@ -54,6 +54,8 @@ typedef NS_OPTIONS(uint32_t, CollisionCategory){
         
         // reset
         _maxPlayerY = 80;
+        [GameState sharedInstance].score = 0;
+        _gameOver = NO;
         
         self.physicsWorld.gravity = CGVectorMake(0.0f, -2.0f);
         self.physicsWorld.contactDelegate = self;

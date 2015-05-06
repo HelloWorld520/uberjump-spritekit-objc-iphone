@@ -8,6 +8,7 @@
 
 #import "EndGameScene.h"
 #import "GameState.h"
+#import "GameScene.h"
 
 @implementation EndGameScene
 
@@ -55,6 +56,13 @@
     }
     
     return self;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    // transition back to the game
+    SKScene *scene = [[GameScene alloc] initWithSize:self.size];
+    SKTransition *reveal = [SKTransition fadeWithDuration:0.5];
+    [self.view presentScene:scene transition:reveal];
 }
 
 @end
